@@ -6,15 +6,38 @@ import {
   View,
   ProgressBarAndroid
 } from 'react-native';
+import firebase from 'firebase';
 
 class Top extends Component {
+  constructor(props){
+    super(props);
+    
+    this.state = { xp: 0, nivel: 0 };
+  }
+ componentDidMount(){
+    var Pontuação = firebase.database().ref('usuarios/usuario1/Geral/exp');
+    Pontuação.on('value', (snapshot) => {
+      var pontos = snapshot.val() ;
+      this.setState( {xp: pontos})
+    });
+    var niveis = firebase.database().ref('usuarios/usuario1/Geral/nivel');
+    niveis.on('value', (snapshot) => {
+      var nivel = snapshot.val() ;
+      this.setState( {nivel: nivel})
+    });
+  };
+
+  
   render(){
   const { estiloAvatar, estiloBarra, estiloConf, Cab, estiloView, estiloText, estiloText2} = Estilos;
+  let {xp} = this.state;
+  let {nivel} = this.state;
   return(
+    
     <View style={Cab}> 
 
-      <TouchableOpacity style={ estiloAvatar}>
-        <Image source={ require('../../Img/Iconis/Avatar.png') }
+      <TouchableOpacity style={ estiloAvatar} onPress={() => {this.teste();}}>
+        <Image source={ require('../Img/Iconis/Avatar.png') }
                 style={  {width: 60, height: 60} }/>
         </TouchableOpacity>
 
@@ -23,12 +46,12 @@ class Top extends Component {
           <Text style={ estiloText }>Nome</Text>
           <Text style={ estiloText2 }>Pontos: </Text>
         </View>    
-        <ProgressBarAndroid styleAttr="Horizontal" backgroundColor="#ef5350" color="#2196F3" indeterminate={false} progress={0.5} />
-        <Text style={ estiloText2 }>Lv x</Text>
+        <ProgressBarAndroid styleAttr="Horizontal" backgroundColor="#ef5350" color="#2196F3" indeterminate={false} progress={xp} />
+        <Text style={ estiloText2 }>Lv {nivel}</Text>
       </View>
 
-      <TouchableOpacity style={ estiloConf }>
-        <Image source={ require('../../Img/Iconis/Conf.png') }
+      <TouchableOpacity style={ estiloConf } onPress={() => this.props.navigation.navigate('')}>
+        <Image source={ require('../Img/Iconis/Conf.png') }
                 style={  {width: 35, height: 35} }/>
       </TouchableOpacity>
 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   Text,
   TouchableOpacity,
@@ -6,34 +6,32 @@ import {
   View,
 } from 'react-native';
 
-class Menu extends Component {
-    render(){
+const Menu = ({navigation}) => {
     const {estiloText, estiloTouth, estiloView} = Estilos;
     return(
 
     <View style={ estiloView }>
 
-        <TouchableOpacity style={ estiloTouth }>
-            <Image source={ require('../../Img/Iconis/Trof.png') }
+        <TouchableOpacity style={ estiloTouth } onPress={() => navigation.navigate('Ranking')}>
+            <Image source={ require('../Img/Iconis/Trof.png') }
                     style={ {width: 100, height: 100} }/>
             <Text style={ estiloText }>RANKING</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={ estiloTouth }>
-            <Image source={ require('../../Img/Iconis/Progr.png') }
+        <TouchableOpacity style={ estiloTouth } onPress={() => navigation.navigate('Info')}>
+            <Image source={ require('../Img/Iconis/Progr.png') }
                     style={ {width: 100, height: 100} }/>
             <Text style={ estiloText }>STATUS</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={ estiloTouth }>
-            <Image source={ require('../../Img/Iconis/conquista.png') }
+        <TouchableOpacity style={ estiloTouth } onPress={() => navigation.navigate('Conquistas')}>
+            <Image source={ require('../Img/Iconis/conquista.png') }
                    style={ {width: 100, height: 100} }/>
             <Text style={ estiloText }>CONQUISTAS</Text>
         </TouchableOpacity>
 
     </View>
     );
-    }
 };
 
 const Estilos = {
@@ -56,5 +54,9 @@ const Estilos = {
         padding: 15, 
       }
 };
+
+Menu.navigationOpitions = {
+  title: 'Menu'
+}
 
 export default Menu;

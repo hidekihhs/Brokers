@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import Top from '../Top'
 import Menu from '../Menu'
+import {Rota} from '../../Rotas'
 
 const Estilos = {
 
@@ -42,16 +43,16 @@ const Estilos = {
   }
 };
 
-const screenPrincipal = () => {
+const ScreenPrincipal = ({navigation}) => {
   const { estiloText, estiloTouth, estiloTouth2, estiloView, estiloDomnio } = Estilos;
   return (
     <View>  
-      <Top/>
+      <Top navigation={navigation}/>
       
-      <Menu/> 
+      <Menu navigation={navigation} /> 
     
-      <TouchableOpacity  style={estiloDomnio}>
-        <Image source={ require('../../../Img/Iconis/Marca.png') }
+      <TouchableOpacity  style={estiloDomnio} onPress={() => navigation.navigate('Regioes')}>
+        <Image source={ require('../../Img/Iconis/Marca.png') }
                 style={ { width:100, height:100 } } />
         <Text>N</Text>
         <Text>Áreas Domindas</Text>
@@ -59,14 +60,14 @@ const screenPrincipal = () => {
       
       <View style={ estiloView }>
 
-        <TouchableOpacity style={ estiloTouth }>
-          <Image source={ require('../../../Img/Iconis/Mapa.png') }
+        <TouchableOpacity style={ estiloTouth } onPress={() => navigation.navigate('Imoveis')}>
+          <Image source={ require('../../Img/Iconis/Mapa.png') }
                 style={ { width:100, height:100 } } />
           <Text style={ estiloText }>Explorar Imoveis</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={ estiloTouth2 }>
-          <Image source={ require('../../../Img/Iconis/Visita.png') }
+        <TouchableOpacity style={ estiloTouth2 }onPress={() => navigation.navigate('Visita')}>
+          <Image source={ require('../../Img/Iconis/Visita.png') }
                 style={ { width:100, height:100 } } />
           <Text style={ estiloText }>Marcar Visita </Text>
         </TouchableOpacity>
@@ -75,10 +76,10 @@ const screenPrincipal = () => {
       </View>
       <View>
 
-          <Image soucer={require('../../../Img/Iconis/Trof.png')}
+          <Image soucer={require('../../Img/Iconis/Trof.png')}
                 style={ { width:20, height:20} }/>
           <Text>Ranking</Text>
-          <Image soucer={require('../../../Img/Iconis/Trof.png')}
+          <Image soucer={require('../../Img/Iconis/Trof.png')}
                 style={ {width:20, height:20} }/>
 
       </View>
@@ -86,4 +87,9 @@ const screenPrincipal = () => {
   );
 };
 
-export default screenPrincipal;
+ScreenPrincipal.navigationOpitions = {
+  title: 'Home'
+}
+
+
+export default ScreenPrincipal;
