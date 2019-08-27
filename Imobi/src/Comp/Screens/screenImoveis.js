@@ -5,10 +5,10 @@ import {
 import Top from '../Top'
  
 
-const screenImoveis = () => {
+const screenImoveis = ({navigation}) => {
   return (
     <View>  
-      <Top/>
+      <Top navigation={navigation} />
     
     </View>
   );

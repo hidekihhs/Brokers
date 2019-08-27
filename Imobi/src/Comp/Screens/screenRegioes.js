@@ -14,11 +14,11 @@ const Estilos = {
   }
 };
 
-const screenRegioes = () => {
+const screenRegioes = ({navigation}) => {
   const { estiloText, estiloTouth, estiloTouth2, estiloView, estiloDomnio } = Estilos;
   return (
     <View>  
-      <Top/>
+      <Top navigation={navigation}/>
     
     </View>
   );

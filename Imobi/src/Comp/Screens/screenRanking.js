@@ -21,7 +21,7 @@ const screenRanking = ({navigation}) => {
   const { estiloText, estiloTouth, estiloTouth2, estiloView, estiloDomnio } = Estilos;
   return (
     <View>  
-      <Top/>
+      <Top navigation={navigation}/>
       
       <Menu navigation={navigation} /> 
 

@@ -9,7 +9,7 @@ import Menu from '../Menu'
 const screenInfo = ({navigation}) => {
   return (
     <View>  
-      <Top/>
+      <Top navigation={navigation}/>
       
       <Menu navigation={navigation}  /> 
     

@@ -14,11 +14,11 @@ const Estilos = {
   }
 };
 
-const screenVisita = () => {
+const screenVisita = ({navigation}) => {
   const { estiloText, estiloTouth, estiloTouth2, estiloView, estiloDomnio } = Estilos;
   return (
     <View>  
-      <Top/>
+      <Top navigation={navigation} />
     
     </View>
   );
