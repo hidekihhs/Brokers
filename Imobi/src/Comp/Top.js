@@ -36,7 +36,7 @@ class Top extends Component {
     
     <View style={Cab}> 
 
-      <TouchableOpacity style={ estiloAvatar} onPress={() => {this.teste();}}>
+      <TouchableOpacity style={ estiloAvatar} onPress={() => this.props.navigation.navigate('Home')}>
         <Image source={ require('../Img/Iconis/Avatar.png') }
                 style={  {width: 60, height: 60} }/>
         </TouchableOpacity>
@@ -50,7 +50,7 @@ class Top extends Component {
         <Text style={ estiloText2 }>Lv {nivel}</Text>
       </View>
 
-      <TouchableOpacity style={ estiloConf } onPress={() => this.props.navigation.navigate('')}>
+      <TouchableOpacity style={ estiloConf } onPress={() => this.props.navigation.navigate('Login')}>
         <Image source={ require('../Img/Iconis/Conf.png') }
                 style={  {width: 35, height: 35} }/>
       </TouchableOpacity>
